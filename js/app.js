@@ -38,22 +38,69 @@ var Player = function(x,y) {
     this.x = x;
     this.y = y;
 
+    this.height = 50;
+    this.width = 150;
+    this.speed = 100;
+    this.lives = 3;
+    this.score = 0;
 
     this.speed = 100;
     this.sprite = 'images/char-horn-girl.png';
 }
 
 Player.prototype.update = function(dt) {
+     if (this.x < 0 || this.x > 400) {
+        if(this.x < 0){
+            this.x = 0;
+        }
+        else{
+            this.x = 400;
+        }
+    }
+      if (this.y < 0 || this.y > 400) {
+        if(this.y < 0){
+            this.reset();
+        }
+        else{
+            this.y = 400;
+        }
+    }
+};
 
-}
+
+Player.prototype.reset = function() {
+        this.y = 400;
+        this.x = 0;
+        this.lives = this.lives - 1;
+
+        if (this.lives == 0) {
+            console.log('YOU LOSE!')
+        }
+};
+
+
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 
 }
 
-Player.prototype.handleInput = function() {
+Player.prototype.handleInput = function(direction) {
+    if (direction == 'left') {
+        this.x -= 100;
+    }
 
+    if (direction == 'right') {
+        this.x += 100;
+    }
+
+    if (direction == 'up') {
+        this.y -= 83;
+    }
+
+    if (direction == 'down') {
+        this.y += 83;
+    }
 }
 
 // Now instantiate your objects.
