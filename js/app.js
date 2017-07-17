@@ -88,6 +88,12 @@ var Player = function(x,y) {
 Player.prototype.reset = function() {
     this.x = 205;
     this.y = 400;
+
+    console.log(this.lives);
+
+    if (this.lives == 0) {
+        console.log('YOU LOSE!')
+    }
 };
 
 Player.prototype.update = function(dt) {
@@ -111,15 +117,6 @@ Player.prototype.update = function(dt) {
 };
 
 
-Player.prototype.reset = function() {
-        this.y = 400;
-        this.x = 0;
-        console.log(this.lives);
-
-        if (this.lives == 0) {
-            console.log('YOU LOSE!')
-        }
-};
 
 Player.prototype.checkCollisions = function() {
 
