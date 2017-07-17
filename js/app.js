@@ -100,8 +100,8 @@ Player.prototype.update = function(dt) {
         console.log('you made it across!');
         this.reset();
         this.score += 1;
-        $("#score").text(player.score);
-        console.log('score: ' + player.score);
+        $("#score").text(this.score);
+        console.log('score: ' + this.score);
 
     }
 
