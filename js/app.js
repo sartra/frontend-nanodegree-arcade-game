@@ -3,14 +3,21 @@ var lives = 5;
 var score = 0;
 //sounds withcreatejs sound API
 var caught = "snap";
+var jumpSound = "jump";
 
 // the functiones required by the createjs sound API in order to work correctly
 function loadSounds() {
     createjs.Sound.registerSound("sounds/caught.mp3", caught);
+    createjs.Sound.registerSound("sounds/jump.mp3", jumpSound);
+
 }
 
 function playSnap() {
     createjs.Sound.play(caught);
+}
+
+function playJump() {
+    createjs.Sound.play(jumpSound);
 }
 
 loadSounds();
@@ -158,38 +165,42 @@ function drawBox(x, y, width, height, color) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    drawBox(this.x + 5, this.y + 60, 85, 80, "blue");
+    // drawBox(this.x + 5, this.y + 60, 85, 80, "blue");
 
 }
 
 var Heart = function(x,y) {
     this.x = x;
     this.y = y;
-    this.height = 50;
-    this.width = 50;
+    this.height = 171;
+    this.width = 101;
     this.sprite = 'images/Heart.png';
 };
 
 Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
+    //drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
 }
 
 Player.prototype.handleInput = function(direction) {
     if (direction == 'left') {
         this.x -= 100;
+        playJump();
     }
 
     if (direction == 'right') {
         this.x += 100;
+        playJump();
     }
 
     if (direction == 'up') {
         this.y -= 83;
+        playJump();
     }
 
     if (direction == 'down') {
         this.y += 83;
+        playJump();
     }
 }
 
