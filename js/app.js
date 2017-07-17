@@ -53,9 +53,9 @@ Enemy.prototype.update = function(dt) {
         player.y >= this.y - 40) {
             console.log("Ouch");
             playSnap();
-            lives = lives - 1;
-            $("#lifeLeft").text(lives);
-            console.log('lives: ' + lives);
+            player.lives = player.lives - 1;
+            $("#lifeLeft").text(player.lives);
+            console.log('lives: ' + player.lives);
             player.reset();
     }
 
@@ -78,7 +78,7 @@ var Player = function(x,y) {
     this.height = 50;
     this.width = 150;
     this.speed = 100;
-    this.lives = 3;
+    this.lives = 5;
     this.score = 0;
 
     this.speed = 100;
@@ -89,31 +89,39 @@ Player.prototype.reset = function() {
     this.x = 205;
     this.y = 400;
 
-    console.log(this.lives);
-
     if (this.lives == 0) {
         console.log('YOU LOSE!')
     }
 };
 
 Player.prototype.update = function(dt) {
-     if (this.x < 0 || this.x > 400) {
-        if(this.x < 0){
-            this.x = 0;
-        }
-        else{
-            this.x = 400;
-        }
+
+    if (this.y <= -25) {
+        console.log('you made it across!');
+        this.reset();
+        this.score += 1;
+        $("#score").text(player.score);
+        console.log('score: ' + player.score);
+
     }
-      if (this.y < 0 || this.y > 400) {
-        if(this.y < 0){
-            this.reset();
-        }
-        else{
-            this.y = 400;
-        }
-    }
-    this.checkCollisions();
+
+    //  if (this.x < 0 || this.x > 400) {
+    //     if(this.x < 0){
+    //         this.x = 0;
+    //     }
+    //     else{
+    //         this.x = 400;
+    //     }
+    // }
+    //   if (this.y < 0 || this.y > 400) {
+    //     if(this.y < 0){
+    //         this.reset();
+    //     }
+    //     else{
+    //         this.y = 400;
+    //     }
+    // }
+    // this.checkCollisions();
 };
 
 
