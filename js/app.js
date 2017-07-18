@@ -93,7 +93,7 @@ Enemy.prototype.update = function(dt) {
                 playGameOver();
                 // change body background to red
                 document.body.style.backgroundColor = "#AA0000";
-                // add reset.png to fill canvas
+                // add replay.png to fill canvas
                 //and when they click game resets to beginning
             }
 
