@@ -140,6 +140,8 @@ var Engine = (function(global) {
             }
         }
 
+        ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
+
         renderEntities();
     }
 
