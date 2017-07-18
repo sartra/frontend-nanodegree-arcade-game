@@ -147,11 +147,24 @@ var Engine = (function(global) {
 
         renderEntities();
 
-        if (global.replay){
+        function gameOver(){
 
             ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
 
             document.body.style.backgroundColor = "#AA0000";
+
+            ctx.font = '30pt Calibri';
+            ctx.fillStyle = 'white';
+            ctx.fillText('Game Over', 160, 70);
+            ctx.fillText('Click to Play Again', 110, 130);
+
+        }
+
+        if (global.replay){
+
+
+
+            gameOver();
         }
     }
 
