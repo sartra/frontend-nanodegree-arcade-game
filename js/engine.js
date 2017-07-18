@@ -145,14 +145,14 @@ var Engine = (function(global) {
         // draws an image to canvas for when player looses
 
 
+        renderEntities();
+
         if (global.replay){
 
             ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
 
             document.body.style.backgroundColor = "#AA0000";
         }
-
-        renderEntities();
     }
 
     /* This function is called by the render function and is called on each game
