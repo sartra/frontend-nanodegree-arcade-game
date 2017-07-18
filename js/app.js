@@ -2,22 +2,47 @@
 var lives = 5;
 var score = 0;
 //sounds withcreatejs sound API
+// http://createjs.com/getting-started/soundjs
 var caught = "snap";
 var jumpSound = "jump";
+var success = "success";
+var gameover = "gameover";
 
 // the functiones required by the createjs sound API in order to work correctly
 function loadSounds() {
     createjs.Sound.registerSound("sounds/caught.mp3", caught);
     createjs.Sound.registerSound("sounds/jump.mp3", jumpSound);
-
+    createjs.Sound.registerSound("sounds/success.mp3", success);
+    createjs.Sound.registerSound("sounds/gameover.mp3", gameover);
 }
+
+// looping background music
+myAudio = new Audio('sounds/music.mp3');
+//volume set 0-1
+myAudio.volume = .5;
+
+myAudio.addEventListener('ended', function() {
+    this.currentTime = 0;
+    this.play();
+}, false);
+
+// UNCOMMENT FOR BG MUSIC
+//myAudio.play();
+
+
 
 function playSnap() {
     createjs.Sound.play(caught);
 }
-
 function playJump() {
     createjs.Sound.play(jumpSound);
+}
+
+function playSuccess() {
+    createjs.Sound.play(success);
+}
+function playGameOver() {
+    createjs.Sound.play(gameover);
 }
 
 loadSounds();
@@ -97,6 +122,7 @@ Player.prototype.reset = function() {
     this.y = 400;
 
     if (this.lives == 0) {
+
         console.log('YOU LOSE!')
     }
 };
@@ -105,6 +131,7 @@ Player.prototype.update = function(dt) {
 
     if (this.y <= -25) {
         console.log('you made it across!');
+        playSuccess();
         this.reset();
         this.score += 1;
         $("#score").text(this.score);
