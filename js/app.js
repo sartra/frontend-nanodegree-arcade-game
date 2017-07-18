@@ -89,14 +89,6 @@ Enemy.prototype.update = function(dt) {
             $("#lifeLeft").text(player.lives);
             console.log('lives: ' + player.lives);
 
-            if(player.lives === 0){
-                playGameOver();
-                // change body background to red
-                document.body.style.backgroundColor = "#AA0000";
-                // add replay.png to fill canvas
-                //and when they click game resets to beginning
-            }
-
 
             player.reset();
     }
@@ -131,10 +123,14 @@ Player.prototype.reset = function() {
     this.x = 205;
     this.y = 400;
 
-    if (this.lives == 0) {
+        if(this.lives === 0){
+                playGameOver();
+                // change body background to red
+                document.body.style.backgroundColor = "#AA0000";
+                // add replay.png to fill canvas
+                //and when they click game resets to beginning
+        }
 
-        console.log('YOU LOSE!')
-    }
 };
 
 Player.prototype.update = function(dt) {
