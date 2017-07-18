@@ -12,8 +12,8 @@ var gameover = "gameover";
 function loadSounds() {
     createjs.Sound.registerSound("sounds/caught.mp3", caught);
     createjs.Sound.registerSound("sounds/jump.mp3", jumpSound);
-    createjs.Sound.registerSound("sounds/success.mp3", success);
-    createjs.Sound.registerSound("sounds/gameover.mp3", gameover);
+    createjs.Sound.registerSound("sounds/success.wav", success);
+    createjs.Sound.registerSound("sounds/gameover.wav", gameover);
 }
 
 // looping background music
@@ -88,6 +88,16 @@ Enemy.prototype.update = function(dt) {
             player.lives = player.lives - 1;
             $("#lifeLeft").text(player.lives);
             console.log('lives: ' + player.lives);
+
+            if(player.lives === 0){
+                playGameOver();
+                // change body background to red
+                document.body.style.backgroundColor = "#AA0000";
+                // add reset.png to fill canvas
+                //and when they click game resets to beginning
+            }
+
+
             player.reset();
     }
 
@@ -96,7 +106,7 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    drawBox(this.x, this.y + 77, 100, 67, "yellow");
+    //drawBox(this.x, this.y + 77, 100, 67, "yellow");
 };
 
 
@@ -131,63 +141,25 @@ Player.prototype.update = function(dt) {
 
     if (this.y <= -25) {
         console.log('you made it across!');
-        playSuccess();
         this.reset();
+        playSuccess();
         this.score += 1;
         $("#score").text(this.score);
         console.log('score: ' + this.score);
 
     }
 
-    //  if (this.x < 0 || this.x > 400) {
-    //     if(this.x < 0){
-    //         this.x = 0;
-    //     }
-    //     else{
-    //         this.x = 400;
-    //     }
-    // }
-    //   if (this.y < 0 || this.y > 400) {
-    //     if(this.y < 0){
-    //         this.reset();
-    //     }
-    //     else{
-    //         this.y = 400;
-    //     }
-    // }
-    // this.checkCollisions();
 };
 
 
 
-Player.prototype.checkCollisions = function() {
-
-    for (var i = 0; i < allEnemies.length; i++) {
-        if ((this.x < allEnemies[i].x + allEnemies[i].width) && (this.x + this.width > allEnemies[i].x) && (this.y < allEnemies[i].y + allEnemies[i].height) && (this.height + this.y > allEnemies[i].y)) {
-
-
-            console.log("Collision!");
-            this.lives--;
-            this.reset();
-        }
-
-        else if ((this.x < heart.x + heart.width) && (this.x + this.width > heart.x) && (this.y < heart.y + heart.height) && (this.height + this.y > heart.y)) {
-
-            setTimeout (function() {
-            alert('YOU WIN!');
-            }, 100);
-            this.reset();
-        }
-    }
-};
-
-function drawBox(x, y, width, height, color) {
-    ctx.beginPath();
-    ctx.rect(x, y, width, height);
-    ctx.lineWidth = 2;
-    ctx.strokeStyle = color;
-    ctx.stroke();
-};
+// function drawBox(x, y, width, height, color) {
+//     ctx.beginPath();
+//     ctx.rect(x, y, width, height);
+//     ctx.lineWidth = 2;
+//     ctx.strokeStyle = color;
+//     ctx.stroke();
+// };
 
 
 Player.prototype.render = function() {
@@ -196,18 +168,7 @@ Player.prototype.render = function() {
 
 }
 
-var Heart = function(x,y) {
-    this.x = x;
-    this.y = y;
-    this.height = 171;
-    this.width = 101;
-    this.sprite = 'images/Heart.png';
-};
 
-Heart.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
-}
 
 Player.prototype.handleInput = function(direction) {
     if (direction == 'left') {
@@ -229,6 +190,21 @@ Player.prototype.handleInput = function(direction) {
         this.y += 83;
         playJump();
     }
+}
+
+
+
+var Heart = function(x,y) {
+    this.x = x;
+    this.y = y;
+    this.height = 171;
+    this.width = 101;
+    this.sprite = 'images/Heart.png';
+};
+
+Heart.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    //drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
 }
 
 // Now instantiate your objects.
