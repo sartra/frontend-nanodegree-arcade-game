@@ -166,22 +166,14 @@ Player.prototype.update = function(dt) {
                 console.log("The document is clicked...");
                 replay = false;
                 document.body.style.backgroundColor = "#FFF";
-                player.lives = 0;
+                player.lives = 5;
                 player.score = 0;
-                reset();
+                player.reset();
             }
         }
 
 };
 
-
-document.addEventListener('keyup', function(e) {
-    var allowedKeys = {
-        37: 'left',
-        38: 'up',
-        39: 'right',
-        40: 'down'
-    };
 
 
 // function drawBox(x, y, width, height, color) {
@@ -235,7 +227,6 @@ var Heart = function(x,y) {
 
 Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //drawBox(this.x + 5, this.y + 50, 95, 90, "blue");
 }
 
 // Now instantiate your objects.
