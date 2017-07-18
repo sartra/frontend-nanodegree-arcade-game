@@ -123,26 +123,40 @@ Player.prototype.reset = function() {
     this.x = 205;
     this.y = 400;
 
-        if(this.lives === 0){
-                playGameOver();
-                // change body background to red
-                document.body.style.backgroundColor = "#AA0000";
-                // add replay.png to fill canvas
-                //and when they click game resets to beginning
-        }
+    if(this.lives === 0){
+        playGameOver();
+        // change body background to red
+        document.body.style.backgroundColor = "#AA0000";
+        // add replay.png to fill canvas
+        replay = true;
+        //and when they click game resets to beginning
+    }
 
 };
 
 Player.prototype.update = function(dt) {
 
-    if (this.y <= -25) {
+    if (this.y < -15) {
         console.log('you made it across!');
         this.reset();
         playSuccess();
         this.score += 1;
         $("#score").text(this.score);
         console.log('score: ' + this.score);
+    }
 
+console.log(this.x, this.y);
+// so they cannot go off the screen
+// canvas width: 505
+// canvas height: 606
+    if (this.y > 400){
+        this.y = 400;
+    }
+    if (this.x > 405){
+        this.x = 405;
+    }
+    if (this.x < 0){
+        this.x = 5;
     }
 
 };

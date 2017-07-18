@@ -136,11 +136,18 @@ var Engine = (function(global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
+
                 ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
             }
         }
 
-        ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
+        // draws an image to canvas for when player looses
+
+        var replay = false;
+
+        if (replay){
+            ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
+        }
 
         renderEntities();
     }
