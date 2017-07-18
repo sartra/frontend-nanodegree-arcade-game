@@ -23,7 +23,8 @@ var Engine = (function(global) {
         win = global.window,
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
-        lastTime;
+        lastTime,
+        replay = false;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -143,10 +144,12 @@ var Engine = (function(global) {
 
         // draws an image to canvas for when player looses
 
-        var replay = false;
 
-        if (replay){
+        if (global.replay){
+
             ctx.drawImage(Resources.get('images/replay.png'), 0, 0);
+
+            document.body.style.backgroundColor = "#AA0000";
         }
 
         renderEntities();
@@ -196,4 +199,5 @@ var Engine = (function(global) {
      * from within their app.js files.
      */
     global.ctx = ctx;
+    global.replay = replay;
 })(this);
