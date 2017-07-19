@@ -130,7 +130,7 @@ Player.prototype.reset = function() {
         // add replay.png to fill canvas
         replay = true;
         //and when they click game resets to beginning
-        player.style.visibility = "hidden";
+        player.reset();
     }
 
 };
