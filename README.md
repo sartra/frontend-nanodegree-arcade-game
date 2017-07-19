@@ -63,4 +63,4 @@ Help your player across the road avoiding the enemy bugs along the way. Reach th
 
 ####here is where we will add all known issues I have for this project.
 
-  * score and lives not resetting on replay
+  * leveling up

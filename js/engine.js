@@ -162,8 +162,6 @@ var Engine = (function(global) {
 
         if (global.replay){
 
-
-
             gameOver();
         }
     }
