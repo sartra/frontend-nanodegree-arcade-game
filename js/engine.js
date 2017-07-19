@@ -24,7 +24,8 @@ var Engine = (function(global) {
         canvas = doc.createElement('canvas'),
         ctx = canvas.getContext('2d'),
         lastTime,
-        replay = false;
+        replay = false,
+        gameOn = true;
 
     canvas.width = 505;
     canvas.height = 606;
@@ -161,7 +162,6 @@ var Engine = (function(global) {
         }
 
         if (global.replay){
-
             gameOver();
         }
     }
@@ -211,4 +211,5 @@ var Engine = (function(global) {
      */
     global.ctx = ctx;
     global.replay = replay;
+    global.gameOn = gameOn;
 })(this);

@@ -250,7 +250,9 @@ var heart = new Heart(150,150);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+
+if(gameOn===true){
+    document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
@@ -258,5 +260,7 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
-});
+        player.handleInput(allowedKeys[e.keyCode]);
+    });
+}
+
