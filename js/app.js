@@ -130,6 +130,7 @@ Player.prototype.reset = function() {
         // add replay.png to fill canvas
         replay = true;
         //and when they click game resets to beginning
+        player.style.visibility = "hidden";
     }
 
 };
@@ -168,9 +169,13 @@ Player.prototype.update = function(dt) {
                 document.body.style.backgroundColor = "#FFF";
                 player.lives = 5;
                 player.score = 0;
+                $("#lifeLeft").text(player.lives);
+                $("#score").text(player.score);
                 player.reset();
             }
         }
+
+        console.log(player.lives, player.score);
 
 };
 
