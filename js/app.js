@@ -131,6 +131,7 @@ Player.prototype.reset = function() {
         replay = true;
         //and when they click game resets to beginning
         //player.reset();
+        gameOn=false;
     }
 
 };
@@ -146,7 +147,7 @@ Player.prototype.update = function(dt) {
         console.log('score: ' + this.score);
     }
 
-    console.log(this.x, this.y);
+
     // so player cannot go off the screen
     // canvas width: 505
     // canvas height: 606
@@ -172,6 +173,7 @@ Player.prototype.update = function(dt) {
                 $("#lifeLeft").text(player.lives);
                 $("#score").text(player.score);
                 player.reset();
+                gameOn=true;
             }
         }
 
@@ -251,16 +253,16 @@ var heart = new Heart(150,150);
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
 
-if(gameOn===true){
-    document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
         39: 'right',
         40: 'down'
     };
-
+if(gameOn===true){
         player.handleInput(allowedKeys[e.keyCode]);
-    });
-}
+    }
+});
+
 
