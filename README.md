@@ -30,7 +30,7 @@ Help your player across the road avoiding the enemy bugs along the way. Reach th
 
 ##Goal of project
 
-###Goal 1 - Completed 16/09/2016
+###Goal 1
 
   * Update the _app.js_ file to implement the _Player_ and _Enemy_ classes doing the following:
   * The Enemy function, which initiates the Enemy by: - Done
@@ -59,8 +59,4 @@ Help your player across the road avoiding the enemy bugs along the way. Reach th
       * If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset Player method to handle that). - Done
   *You can add your own Player methods as needed.
 
-###known issues
 
-####here is where we will add all known issues I have for this project.
-
-  * leveling up
