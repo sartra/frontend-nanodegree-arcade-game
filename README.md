@@ -11,12 +11,13 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 #Description
 
-In this project I was provided with visual assets and a game loop engine; using these tools I must add a number of entities to the game including the player characters and enemies to recreate _a version of_ the classic arcade game Frogger. The reason fo this project is to practice using Object Oriented JavaScript using classes capable of creating countless instances of similarly functioning objects.
+Modification of the arcade game Frogger.
+Implementation of object oriented javaScript to use classes to create instances of similarly functioning objects.
 
 ## How to Play
   * Open index.html in your browser.
   * Use your arrow keys to move the player.
-  * If you collide with an enemy bug, your player will reset to starting position.
+  * If you collide with an enemy, your player will reset to starting position.
   * If you reach the water without going out of bounds and not colliding with an enemy bug, you win!
 
 ### Objective
