@@ -11,53 +11,59 @@ For detailed instructions on how to get started, check out this [guide](https://
 
 #Description
 
-Modification of the arcade game Frogger.
-Implementation of object oriented javaScript to use classes to create instances of similarly functioning objects.
+In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies. The player can move left, right, up and down. The enemies move in varying speeds on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won.
 
 ## How to Play
-  * Open index.html in your browser.
-  * Use your arrow keys to move the player.
-  * If you collide with an enemy, your player will reset to starting position.
-  * If you reach the water without going out of bounds and not colliding with an enemy bug, you win!
+  * Use your arrow keys to move your player up/down/right/left.
+  * If you collide with the enemy you return to starting position and lose a life (out of 5 lives).
+  * When you reach the water you score a point
 
-### Objective
-Help your player across the road avoiding the enemy bugs along the way. Reach the water without being touched to win!
+
+
+### Additional Functionality
+
+In addition to the basic functionality, you can add more cool functionality to your game. For example, here are some additional features that you can add:
+
+Player selection: allow the user to select the image for the player character before starting the game. You can use the different character images provided in the images folder (we’ll get to that below).
+Score: you can implement a score for the game. For example, the score can increase each time the player reaches the water, and it can be reset to 0 when collision occurs (or it can be reduced).
+Collectables: you can add gems to the game, allowing the player to collect them to make the game more interesting.
+Anything else you like!
 
 ##Documentation
 
-  * this repository at: ....
-  * Udacity JavaScript style guide (http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html)
-  * Udacity project detailed description (https://docs.google.com/document/d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub)
+  * JavaScript style guide - http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html
+  * <a href="https://docs.google.com/document d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub">Udacity project detailed description</a>
 
 ##Goal of project
 
 ###Goal 1
 
-  * Update the _app.js_ file to implement the _Player_ and _Enemy_ classes doing the following:
-  * The Enemy function, which initiates the Enemy by: - Done
-    * Loading the image by setting this.sprite to the appropriate image in the image folder (already provided) - Done
-    * Setting the Enemy initial location (you need to implement) - Done
-    * Setting the Enemy speed (you need to implement) - Done
-    * The update method for the Enemy - Done
-    * Updates the Enemy location (you need to implement) - Done
-    * Handles collision with the Player (you need to implement) - Done
-    * Add own Enemy methods as needed - Done (random speed on regeneration)
+Inside the app.js file, you will need to implement the Player and the Enemy classes, using Object-Oriented JavaScript. Part of the code for the Enemy is provided to you, and you will need to complete the following:
 
-    * The player function _to elaborate with all other details from detailed description_(see goal2)
+- The Enemy function, which initiates the Enemy by:
+- Loading the image by setting this.sprite to the appropriate image in the image folder (already provided)
+- Setting the Enemy initial location (you need to implement)
+- Setting the Enemy speed (you need to implement)
+- The update method for the Enemy
+- Updates the Enemy location (you need to implement)
+- Handles collision with the Player (you need to implement)
+- You can add your own Enemy methods as needed
 
 ###Goal 2
 
-  * implement the Player class, and you can use the Enemy class as an example on how to get started.
-  * At minimum the following should be implemented:
-  * The Player function, which initiates the Player by:
-  * Loading the image by setting this.sprite to the appropriate image in the image folder (use the code from the Enemy function as an example on how to do that) - Done
-  * Setting the Player initial location - Done
-      * The update method for the Player (can be similar to the one for the Enemy)
-      * The render method for the Player (use the code from the render method for the Enemy) - Done
-      * The handleInput method, which should receive user input, allowedKeys (the key which was pressed) and move the player according to that input. In particular: - Done
-        * Left key should move the player to the left, right key to the right, up should move the player up and down should move the player down. - Done
-      * Recall that the player cannot move off screen (so you will need to check for that and handle appropriately). - Done
-      * If the player reaches the water the game should be reset by moving the player back to the initial location (you can write a separate reset Player method to handle that). - Done
-  *You can add your own Player methods as needed.
+You will also need to implement the Player class, and you can use the Enemy class as an example on how to get started. At minimum you should implement the following:
 
+-The Player function, which initiates the Player by:
+-Loading the image by setting this.sprite to the appropriate image in the image folder (use the code from the -Enemy function as an example on how to do that)
+-Setting the Player initial location
+-The update method for the Player (can be similar to the one for the Enemy)
+-The render method for the Player (use the code from the render method for the Enemy)
+-The handleInput method, which should receive user input, allowedKeys (the key which was pressed) and move the -player according to that input. In particular:
+  -Left key should move the player to the left, right key to the right, up should move the player up and down   -should move the player down.
+  -Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
+  -If the player reaches the water the game should be reset by moving the player back to the initial location   (-you can write a separate reset Player method to handle that).
+  -You can add your own Player methods as needed.
+  -Once you have completed implementing the Player and Enemy, you should instantiate them by:
 
+Creating a new Player object
+Creating several new Enemies objects and placing them in an array called allEnemies
