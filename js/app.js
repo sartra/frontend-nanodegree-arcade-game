@@ -8,7 +8,7 @@ var jumpSound = "jump";
 var success = "success";
 var gameover = "gameover";
 
-// the functiones required by the createjs sound API in order to work correctly
+// the functiones required by the createjs sound API
 function loadSounds() {
     createjs.Sound.registerSound("sounds/caught.mp3", caught);
     createjs.Sound.registerSound("sounds/jump.mp3", jumpSound);
@@ -98,7 +98,6 @@ Enemy.prototype.update = function(dt) {
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    //drawBox(this.x, this.y + 77, 100, 67, "yellow");
 };
 
 
@@ -109,8 +108,8 @@ var Player = function(x,y) {
     this.x = x;
     this.y = y;
 
-    this.height = 50;
-    this.width = 150;
+    this.playerHeight = 50;
+    this.playerWidth = 150;
     this.speed = 100;
     this.lives = 5;
     this.score = 0;
@@ -142,7 +141,7 @@ Player.prototype.update = function(dt) {
         console.log('you made it across!');
         this.reset();
         playSuccess();
-        this.score += 1;
+        this.score += 200;
         $("#score").text(this.score);
         console.log('score: ' + this.score);
     }
@@ -183,15 +182,6 @@ Player.prototype.update = function(dt) {
 
 
 
-// function drawBox(x, y, width, height, color) {
-//     ctx.beginPath();
-//     ctx.rect(x, y, width, height);
-//     ctx.lineWidth = 2;
-//     ctx.strokeStyle = color;
-//     ctx.stroke();
-// };
-
-
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     // drawBox(this.x + 5, this.y + 60, 85, 80, "blue");
@@ -224,6 +214,69 @@ Player.prototype.handleInput = function(direction) {
 
 
 
+var Gems = function(x, y, color) {
+
+    this.color = color;
+
+        switch (color) {
+
+            case "orange":
+                this.sprite = 'images/gem-orange.png';
+                break;
+            case "green":
+                this.sprite = 'images/gem-green.png';
+                break;
+            case "blue":
+                this.sprite = 'images/gem-blue.png';
+                break;
+        }
+
+        this.gemWidth = 60;
+        this.gemHeight = 67;
+
+        this.x = x;
+        this.y = y;
+}
+
+    // get the x and y coordinate of the gem
+Gems.prototype.render = function(x, y) {
+
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+
+
+
+var checkGemCollisions = function() {
+
+    gemitems = [gemGreen, gemBlue, gemOrange];
+
+    //alert(objectinst[0]);
+    for (var i = 0; i < gemitems.length; i++) {
+
+        allGems.push(gemitems[i]);
+        console.log(gemitems[i].color);
+        //console.log(gemitems[i]);
+    }
+
+}
+
+var gemlogic = function() {
+ for (var i = 0; i < allGems.length; i++) {
+
+        if (player.x < allGems[i].x + allGems[i].gemWidth && player.x + player.playerWidth > allGems[i].x && player.y < allGems[i].y + allGems[i].gemHeight && player.playerHeight + player.y > allGems[i].y) {
+
+            allGems.splice(i, 1);
+
+            player.score +=100;
+            $("#score").text(player.score);
+
+        }
+    }
+}
+
+
+
 var Heart = function(x,y) {
     this.x = x;
     this.y = y;
@@ -231,6 +284,7 @@ var Heart = function(x,y) {
     this.width = 101;
     this.sprite = 'images/Heart.png';
 };
+
 
 Heart.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -249,9 +303,15 @@ var allEnemies = [enemy1, enemy2, enemy3, enemy4];
 
 var heart = new Heart(150,150);
 
+var allGems = [];
+var gemGreen = new Gems(60, 200, "green");
+var gemOrange = new Gems(300, 100, "orange");
+var gemBlue = new Gems(350, 200, "blue");
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
+
 
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
@@ -260,6 +320,7 @@ document.addEventListener('keyup', function(e) {
         39: 'right',
         40: 'down'
     };
+
 if(gameOn===true){
         player.handleInput(allowedKeys[e.keyCode]);
     }

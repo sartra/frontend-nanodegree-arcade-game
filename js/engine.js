@@ -61,6 +61,9 @@ var Engine = (function(global) {
         win.requestAnimationFrame(main);
     }
 
+
+    checkGemCollisions();
+
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
      * game loop.
@@ -83,6 +86,7 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
+        gemlogic();
     }
 
     /* This is called by the update function and loops through all of the
@@ -105,6 +109,34 @@ var Engine = (function(global) {
      * they are flipbooks creating the illusion of animation but in reality
      * they are just drawing the entire screen over and over.
      */
+
+
+
+//   function renderStartScreen(){
+//         ctx.fillStyle = "#333";
+//         ctx.fillRect(0,0, ctx.canvas.width, ctx.canvas.height);
+
+//         var rowImages = [
+//                 'images/char-boy.png',
+//                 'images/char-cat-girl.png',
+//                 'images/char-horn-girl.png',
+//                 'images/char-princess-girl.png'
+//             ],
+//             numRows = 3,
+//             numCols = 2,
+//             row, col;
+
+//             for (row = 0; row < numRows; row++) {
+//             for (col = 0; col < numCols; col++) {
+
+//             ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+//      }
+//  }
+// }
+
+// renderStartScreen();
+
+
     function render() {
         /* This array holds the relative URL to the image used
          * for that particular row of the game level.
@@ -178,6 +210,11 @@ var Engine = (function(global) {
             enemy.render();
         });
 
+        allGems.forEach(function(gems) {
+            gems.render();
+        });
+
+
         player.render();
     }
 
@@ -201,7 +238,11 @@ var Engine = (function(global) {
         'images/char-boy.png',
         'images/char-horn-girl.png',
         'images/Heart.png',
-        'images/replay.png'
+        'images/replay.png',
+        'images/gem-orange.png',
+        'images/gem-blue.png',
+        'images/gem-green.png',
+        'images/key.png'
     ]);
     Resources.onReady(init);
 
