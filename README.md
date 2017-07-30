@@ -9,14 +9,15 @@ For detailed instructions on how to get started, check out this [guide](https://
 ===============================
 
 
-#Description
+# Description
 
 In this game you have a Player and Enemies (Bugs). The goal of the player is to reach the water, without colliding into any one of the enemies. The player can move left, right, up and down. The enemies move in varying speeds on the paved block portion of the scene. Once a the player collides with an enemy, the game is reset and the player moves back to the start square. Once the player reaches the water the game is won.
 
 ## How to Play
   * Use your arrow keys to move your player up/down/right/left.
-  * If you collide with the enemy you return to starting position and lose a life (out of 5 lives).
-  * When you reach the water you score a point
+  * If you collide with the enemy you return to starting position and lose one life out of 5 lives - when you lose all 5 lives game is over.
+  * When you reach the water you score 200 points
+  * When you collect gems you score 100 points
 
 
 
@@ -29,14 +30,12 @@ Score: you can implement a score for the game. For example, the score can increa
 Collectables: you can add gems to the game, allowing the player to collect them to make the game more interesting.
 Anything else you like!
 
-##Documentation
+## Documentation
 
   * JavaScript style guide - http://udacity.github.io/frontend-nanodegree-styleguide/javascript.html
   * <a href="https://docs.google.com/document d/1v01aScPjSWCCWQLIpFqvg3-vXLH2e8_SZQKC8jNO0Dc/pub">Udacity project detailed description</a>
 
-##Goal of project
-
-###Goal 1
+## Goal 1: Enemy Class
 
 Inside the app.js file, you will need to implement the Player and the Enemy classes, using Object-Oriented JavaScript. Part of the code for the Enemy is provided to you, and you will need to complete the following:
 
@@ -49,7 +48,7 @@ Inside the app.js file, you will need to implement the Player and the Enemy clas
 * Handles collision with the Player (you need to implement)
 * You can add your own Enemy methods as needed
 
-###Goal 2
+### Goal 2: Player Class
 
 You will also need to implement the Player class, and you can use the Enemy class as an example on how to get started. At minimum you should implement the following:
 
@@ -59,11 +58,11 @@ You will also need to implement the Player class, and you can use the Enemy clas
 * The update method for the Player (can be similar to the one for the Enemy)
 * The render method for the Player (use the code from the render method for the Enemy)
 * The handleInput method, which should receive user input, allowedKeys (the key which was pressed) and move the -player according to that input. In particular:
-  -Left key should move the player to the left, right key to the right, up should move the player up and down   -should move the player down.
-  -Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
-  -If the player reaches the water the game should be reset by moving the player back to the initial location   (-you can write a separate reset Player method to handle that).
-  -You can add your own Player methods as needed.
-  -Once you have completed implementing the Player and Enemy, you should instantiate them by:
+  - Left key should move the player to the left, right key to the right, up should move the player up and down   -should move the player down.
+  - Recall that the player cannot move off screen (so you will need to check for that and handle appropriately).
+  - If the player reaches the water the game should be reset by moving the player back to the initial location   (-you can write a separate reset Player method to handle that).
+  - You can add your own Player methods as needed.
+  - Once you have completed implementing the Player and Enemy, you should instantiate them by:
 
 Creating a new Player object
 Creating several new Enemies objects and placing them in an array called allEnemies

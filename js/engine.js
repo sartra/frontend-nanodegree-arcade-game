@@ -134,7 +134,6 @@ var Engine = (function(global) {
 //  }
 // }
 
-// renderStartScreen();
 
 
     function render() {
@@ -237,6 +236,8 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png',
         'images/char-horn-girl.png',
+        'images/char-cat-girl.png',
+        'images/char-princess-girl.png',
         'images/Heart.png',
         'images/replay.png',
         'images/gem-orange.png',
@@ -245,6 +246,10 @@ var Engine = (function(global) {
         'images/key.png'
     ]);
     Resources.onReady(init);
+
+
+// renderStartScreen();
+
 
     /* Assign the canvas' context object to the global variable (the window
      * object when run in a browser) so that developers can use it more easily
