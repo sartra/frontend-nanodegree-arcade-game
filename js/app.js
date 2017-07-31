@@ -176,7 +176,6 @@ Player.prototype.update = function(dt) {
             }
         }
 
-        console.log(player.lives, player.score);
 
 };
 
@@ -247,21 +246,18 @@ Gems.prototype.render = function(x, y) {
 
 
 
-var checkGemCollisions = function() {
+var createGems = function() {
 
-    gemitems = [gemGreen, gemBlue, gemOrange];
+    gems = [gemGreen, gemBlue, gemOrange];
 
-    //alert(objectinst[0]);
-    for (var i = 0; i < gemitems.length; i++) {
-
-        allGems.push(gemitems[i]);
-        console.log(gemitems[i].color);
-        //console.log(gemitems[i]);
+    for (var i = 0; i < gems.length; i++) {
+        allGems.push(gems[i]);
     }
 
 }
 
-var gemlogic = function() {
+var gemCollision = function() {
+
  for (var i = 0; i < allGems.length; i++) {
 
         if (player.x < allGems[i].x + allGems[i].gemWidth && player.x + player.playerWidth > allGems[i].x && player.y < allGems[i].y + allGems[i].gemHeight && player.playerHeight + player.y > allGems[i].y) {
@@ -271,9 +267,22 @@ var gemlogic = function() {
             player.score +=100;
             $("#score").text(player.score);
 
+            if (allGems.length==0){
+
+             var newGem = new Gems(Math.random()*4, Math.random*3, "green");
+
+                allGems.push(newGem);
+            }
+
         }
     }
 }
+
+//randomly place new gems
+// function randomCordinates(x,y){
+//     this.x = 10*Math.random
+// }
+
 
 
 

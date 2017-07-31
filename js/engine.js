@@ -62,7 +62,7 @@ var Engine = (function(global) {
     }
 
 
-    checkGemCollisions();
+   createGems();
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
@@ -86,7 +86,7 @@ var Engine = (function(global) {
     function update(dt) {
         updateEntities(dt);
         // checkCollisions();
-        gemlogic();
+        gemCollision();
     }
 
     /* This is called by the update function and loops through all of the
