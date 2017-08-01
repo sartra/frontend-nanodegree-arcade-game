@@ -3,17 +3,17 @@ var lives = 5;
 var score = 0;
 //sounds withcreatejs sound API
 // http://createjs.com/getting-started/soundjs
-var caught = "snap";
-var jumpSound = "jump";
-var success = "success";
-var gameover = "gameover";
+var CAUGHT = "snap";
+var JUMP = "jump";
+var SUCCESS = "success";
+var GAME_OVER= "gameover";
 
 // the functiones required by the createjs sound API
 function loadSounds() {
-    createjs.Sound.registerSound("sounds/caught.mp3", caught);
-    createjs.Sound.registerSound("sounds/jump.mp3", jumpSound);
-    createjs.Sound.registerSound("sounds/success.wav", success);
-    createjs.Sound.registerSound("sounds/gameover.wav", gameover);
+    createjs.Sound.registerSound("sounds/caught.mp3", CAUGHT);
+    createjs.Sound.registerSound("sounds/jump.mp3", JUMP);
+    createjs.Sound.registerSound("sounds/success.wav", SUCCESS);
+    createjs.Sound.registerSound("sounds/gameover.wav", GAME_OVER);
 }
 
 // looping background music
@@ -32,17 +32,17 @@ myAudio.addEventListener('ended', function() {
 
 
 function playSnap() {
-    createjs.Sound.play(caught);
+    createjs.Sound.play(CAUGHT);
 }
 function playJump() {
-    createjs.Sound.play(jumpSound);
+    createjs.Sound.play(JUMP);
 }
 
 function playSuccess() {
-    createjs.Sound.play(success);
+    createjs.Sound.play(SUCCESS);
 }
 function playGameOver() {
-    createjs.Sound.play(gameover);
+    createjs.Sound.play(GAME_OVER);
 }
 
 loadSounds();
