@@ -183,8 +183,6 @@ Player.prototype.update = function(dt) {
 
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-    // drawBox(this.x + 5, this.y + 60, 85, 80, "blue");
-
 }
 
 
@@ -250,7 +248,7 @@ var createGems = function() {
 
     gems = [gemGreen, gemBlue, gemOrange];
 
-    for (var i = 0; i < gems.length; i++) {
+    for (var i = 0, len=gems.length; i < len; i++) {
         allGems.push(gems[i]);
     }
 
