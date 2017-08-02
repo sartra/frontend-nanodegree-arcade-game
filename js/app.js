@@ -48,6 +48,19 @@ function playGameOver() {
 loadSounds();
 
 
+// how to implement inheritance???
+
+//Initialize the creature class of all the moving elements to draw
+var Creature = function() {
+};
+
+// Draws the creature on the screen
+Creature.prototype.render = function() {
+    "use strict";
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
