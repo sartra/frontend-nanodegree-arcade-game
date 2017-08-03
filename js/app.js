@@ -51,15 +51,20 @@ loadSounds();
 // how to implement inheritance???
 
 //Initialize the creature class of all the moving elements to draw
-var Creature = function() {
+var gameObjects = function() {
 };
 
 // Draws the creature on the screen
-Creature.prototype.render = function() {
+gameObjects.prototype.render = function() {
     "use strict";
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+// Player.prototype = Object.create(gameObjects.prototype);
+// Enemy.prototype = Object.create(gameObjects.prototype);
+
+// Player.prototype.constructor = Player;
+// Enemy.prototype.constructor = Enemy;
 
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
@@ -288,12 +293,6 @@ var gemCollision = function() {
         }
     }
 }
-
-//randomly place new gems
-// function randomCordinates(x,y){
-//     this.x = 10*Math.random
-// }
-
 
 
 
