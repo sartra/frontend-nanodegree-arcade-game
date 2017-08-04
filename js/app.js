@@ -51,37 +51,41 @@ loadSounds();
 // how to implement inheritance???
 
 //Initialize the creature class of all the moving elements to draw
-var gameObjects = function() {
+var Character = function(x,y,sprite) {
+    this.x=x;
+    this.y=y;
+    this.sprite = sprite;
 };
 
 // Draws the creature on the screen
-gameObjects.prototype.render = function() {
+Character.prototype.render = function() {
     "use strict";
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Player.prototype = Object.create(gameObjects.prototype);
-// Enemy.prototype = Object.create(gameObjects.prototype);
-
-// Player.prototype.constructor = Player;
-// Enemy.prototype.constructor = Enemy;
 
 // Enemies our player must avoid
 var Enemy = function(x,y,speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
     // This sets the enemies initial location
-    this.x = x;
-    this.y = y;
+    // this.x = x;
+    // this.y = y;
     this.speed = speed * (Math.random()+1);
 
     this.height = 67;
     this.width = 10;
 
+    Character.call(this, x,y,'images/enemy-bug.png');
+
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    // this.sprite = 'images/enemy-bug.png';
+
 };
+
+Enemy.prototype = Object.create(Character.prototype);
+Enemy.prototype.constructor = Enemy;
 
 
 // Update the enemy's position, required method for game
@@ -114,17 +118,17 @@ Enemy.prototype.update = function(dt) {
 };
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-};
+// Enemy.prototype.render = function() {
+//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+// };
 
 
 // Now write your own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function(x,y) {
-    this.x = x;
-    this.y = y;
+    // this.x = x;
+    // this.y = y;
 
     this.playerHeight = 50;
     this.playerWidth = 150;
@@ -133,8 +137,13 @@ var Player = function(x,y) {
     this.score = 0;
 
     this.speed = 100;
-    this.sprite = 'images/char-horn-girl.png';
+    // this.sprite = 'images/char-horn-girl.png';
+
+    Character.call(this, x,y,'images/char-horn-girl.png');
 }
+
+Player.prototype = Object.create(Character.prototype);
+Player.prototype.constructor = Player;
 
 Player.prototype.reset = function() {
     this.x = 205;
@@ -199,9 +208,9 @@ Player.prototype.update = function(dt) {
 
 
 
-Player.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+// Player.prototype.render = function() {
+//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+// }
 
 
 
