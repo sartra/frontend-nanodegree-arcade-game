@@ -1,3 +1,29 @@
 body {
-    text-align: center;
+  text-align: center;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/*     html {
+background: url(images/background.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}*/
+
+h1 {
+  font-family: 'Passion One', helvetica;
+  font-weight: 600;
+  font-size: 5em;
+}
+
+.details {
+  font-family: 'Passion One', helvetica;
+  font-weight: 400;
+  font-size: 2em;
+}
+

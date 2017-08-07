@@ -319,6 +319,7 @@ var gemCollision = function() {
                 allGems.push(newGem2);
                 allGems.push(newGem3);
 
+                // so that gems aren't in grassy area ???
                 for (var i=0; i<allGems.length; i++){
                     if(allGems[i].y>200){
                         console.log(allGems[i].y)

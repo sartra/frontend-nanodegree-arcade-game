@@ -7,42 +7,13 @@
 
     <link href="https://fonts.googleapis.com/css?family=Passion+One:400,700,900" rel="stylesheet">
 
-<style type="text/css">
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-   /*     html {
-            background: url(images/background.jpg) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }*/
-
-h1{
-  font-family: 'Passion One', cursive, helvetica;
-  font-weight: 600;
-  font-size: 5em;
-}
-
-#details{
-  font-family: 'Passion One', cursive, helvetica;
-  font-weight: 400;
-  font-size: 2em;
-}
-
-
-
-    </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
 <!-- Create Sound JS API:
 http://www.createjs.com/getting-started/soundjs -->
-<script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script></head>
+<script src="https://code.createjs.com/soundjs-0.6.2.min.js"></script>
 
 
 </head>
@@ -62,13 +33,13 @@ http://www.createjs.com/getting-started/soundjs -->
 
 
     <!-- the divs below enable the visibility of the player score and lives -->
-    <div id="details">
-    <div id="scores" class="inline" style="width: auto">
+    <div class="details">
+    <div class="inline scores" style="width: auto">
         <span id="currentScore">Score</span>
         <span id="score">0</span>
     </div>
 
-    <div id="lives" class="inline" style="width: auto">
+    <div class="inline lives" style="width: auto">
         <span id="currentLives">Lives</span>
         <span id="lifeLeft">5</span>
     </div>
