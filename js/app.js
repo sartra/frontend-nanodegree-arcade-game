@@ -1,3 +1,4 @@
+// "use strict";
 // variable creation
 var lives = 5;
 var score = 0;
@@ -59,7 +60,6 @@ var Character = function(x,y,sprite) {
 
 // Draws the creature on the screen
 Character.prototype.render = function() {
-    "use strict";
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -101,6 +101,23 @@ Enemy.prototype.update = function(dt) {
         this.x = -100;
     }
 
+    // if (player.x <= this.x + 40 &&
+    //     player.x >= this.x - 40 &&
+    //     player.y <= this.y + 40 &&
+    //     player.y >= this.y - 40) {
+    //         console.log("Ouch");
+    //         playSnap();
+    //         player.lives = player.lives - 1;
+    //         $("#lifeLeft").text(player.lives);
+    //         console.log('lives: ' + player.lives);
+
+
+    //         player.reset();
+    // }
+
+};
+
+Enemy.prototype.checkCollisions = function(){
     if (player.x <= this.x + 40 &&
         player.x >= this.x - 40 &&
         player.y <= this.y + 40 &&
@@ -114,8 +131,7 @@ Enemy.prototype.update = function(dt) {
 
             player.reset();
     }
-
-};
+}
 
 // Draw the enemy on the screen, required method for game
 // Enemy.prototype.render = function() {
@@ -305,18 +321,7 @@ var gemCollision = function() {
 
 
 
-var Heart = function(x,y) {
-    this.x = x;
-    this.y = y;
-    this.height = 171;
-    this.width = 101;
-    this.sprite = 'images/Heart.png';
-};
 
-
-Heart.prototype.render = function() {
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
@@ -328,8 +333,6 @@ var enemy3 = new Enemy(-100,40, 100);
 var enemy4 = new Enemy(-200,40, 100);
 
 var allEnemies = [enemy1, enemy2, enemy3, enemy4];
-
-var heart = new Heart(150,150);
 
 var allGems = [];
 var gemGreen = new Gems(60, 200, "green");

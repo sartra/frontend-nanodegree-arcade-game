@@ -5,7 +5,7 @@
  *
  * A game engine works by drawing the entire game screen over and over, kind of
  * like a flipbook you may have created as a kid. When your player moves across
- * the screen, it may look like just that image/character is moving or being
+ * the screen, ir
  * drawn but that is not the case. What's really happening is the entire "scene"
  * is being drawn over and over, presenting the illusion of animation.
  *
@@ -87,6 +87,7 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
         gemCollision();
+        checkCollisions();
     }
 
     /* This is called by the update function and loops through all of the
