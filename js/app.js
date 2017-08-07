@@ -161,6 +161,8 @@ var Player = function(x,y) {
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
 
+
+
 Player.prototype.reset = function() {
     this.x = 205;
     this.y = 400;
@@ -168,11 +170,8 @@ Player.prototype.reset = function() {
     if(this.lives === 0){
         playGameOver();
         // change body background to red
-        //document.body.style.backgroundColor = "#AA0000";
-        // add replay.png to fill canvas
         replay = true;
         //and when they click game resets to beginning
-        //player.reset();
         gameOn=false;
     }
 
@@ -279,10 +278,8 @@ var Gems = function(x, y, color) {
 }
 
     // get the x and y coordinate of the gem
-Gems.prototype.render = function(x, y) {
-
-    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+Gems.prototype = Object.create(Character.prototype);
+Gems.prototype.constructor = Gems;
 
 
 
@@ -310,9 +307,29 @@ var gemCollision = function() {
 
             if (allGems.length==0){
 
-             var newGem = new Gems(Math.random()*4, Math.random*3, "green");
+                colors = ["orange", "green", "blue"];
 
-                allGems.push(newGem);
+             var newGem1 = new Gems(Math.random()*300, Math.random()*400, colors[Math.floor(Math.random()*2)]);
+
+             var newGem2 = new Gems(Math.random()*300, Math.random()*400, colors[Math.floor(Math.random()*2)]);
+
+             var newGem3 = new Gems(Math.random()*300, Math.random()*400, colors[Math.ceil(Math.random()*2)]);
+
+                allGems.push(newGem1);
+                allGems.push(newGem2);
+                allGems.push(newGem3);
+
+                for (var i=0; i<allGems.length; i++){
+                    if(allGems[i].y>200){
+                        console.log(allGems[i].y)
+                        allGems[i].y = allGems[i].y-100;
+                    }
+
+                }
+
+                console.log(newGem1, typeof(newGem1.y));
+                console.log(newGem2, newGem1.y)
+                console.log(newGem3, newGem1.y)
             }
 
         }
