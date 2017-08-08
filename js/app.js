@@ -20,7 +20,7 @@ function loadSounds() {
 // looping background music
 myAudio = new Audio('sounds/music.mp3');
 //volume set 0-1
-myAudio.volume = .5;
+myAudio.volume = 0.5;
 
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
@@ -131,7 +131,7 @@ Enemy.prototype.checkCollisions = function(){
 
             player.reset();
     }
-}
+};
 
 // Draw the enemy on the screen, required method for game
 // Enemy.prototype.render = function() {
@@ -156,7 +156,8 @@ var Player = function(x,y) {
     // this.sprite = 'images/char-horn-girl.png';
 
     Character.call(this, x,y,'images/char-horn-girl.png');
-}
+};
+
 
 Player.prototype = Object.create(Character.prototype);
 Player.prototype.constructor = Player;
@@ -205,7 +206,7 @@ Player.prototype.update = function(dt) {
 // if player has lost - have to click canvas to replay game
         if(replay){
             document.onclick = docclickhandler;
-            function docclickhandler() {
+            var docclickhandler = function() {
                 console.log("The document is clicked...");
                 replay = false;
                 document.body.style.backgroundColor = "#FFF";
@@ -215,7 +216,7 @@ Player.prototype.update = function(dt) {
                 $("#score").text(player.score);
                 player.reset();
                 gameOn=true;
-            }
+            };
         }
 
 
@@ -249,7 +250,7 @@ Player.prototype.handleInput = function(direction) {
         this.y += 83;
         playJump();
     }
-}
+};
 
 
 
@@ -275,7 +276,7 @@ var Gems = function(x, y, color) {
 
         this.x = x;
         this.y = y;
-}
+};
 
     // get the x and y coordinate of the gem
 Gems.prototype = Object.create(Character.prototype);
@@ -291,8 +292,8 @@ var createGems = function() {
     for (var i = 0, len=gems.length; i < len; i++) {
         allGems.push(gems[i]);
     }
+};
 
-}
 
 var gemCollision = function() {
 
@@ -322,20 +323,20 @@ var gemCollision = function() {
                 // so that gems aren't in grassy area ???
                 for (var i=0; i<allGems.length; i++){
                     if(allGems[i].y>200){
-                        console.log(allGems[i].y)
-                        allGems[i].y = allGems[i].y-100;
+                        console.log(allGems[i].y);
+                        allGems[i].y -= 100;
                     }
 
                 }
 
                 console.log(newGem1, typeof(newGem1.y));
-                console.log(newGem2, newGem1.y)
-                console.log(newGem3, newGem1.y)
+                console.log(newGem2, newGem1.y);
+                console.log(newGem3, newGem1.y);
             }
 
         }
     }
-}
+};
 
 
 
